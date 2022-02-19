@@ -1,11 +1,34 @@
 {
-  "extends": ["eslint:recommended", "airbnb", "prettier", "prettier/react"],
+  "extends": ["eslint:recommended", "airbnb", "prettier"],
   "plugins": ["react-hooks"],
-  "env": {
-    "browser": true
+
+  "parser": "@babel/eslint-parser",
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
-  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    },
+    "sourceType": "module"
+  },
+
   "rules": {
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
     "no-plusplus": [0],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types": [0],
@@ -14,6 +37,8 @@
     "react/no-array-index-key": [0],
     "react/no-danger": [0],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "arrow-body-style": [0],
+    "prefer-arrow-callback": [0]
   }
 }
